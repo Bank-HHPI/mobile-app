@@ -1,10 +1,30 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import Button from "~/components/Button";
 
 
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Hello, World!</Text>
+
+      <Button variant="black">
+        Connexion
+      </Button>
+
+      <Button variant="white">
+        Inscription
+      </Button>
+
+      <Button variant="blue">
+        Connexion
+      </Button>
+
+      <Button variant="blue-disabled" disabled>
+        Connexion
+      </Button>
+
+      <Button variant="dark">
+        Connexion
+      </Button>
     </View>
   );
 }
@@ -16,14 +36,9 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingLeft: "5%",
     paddingRight: "5%",
-    backgroundColor: '#0f0f0f',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: "center",
     gap: 100
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-    color: "#fff",
   },
 });
