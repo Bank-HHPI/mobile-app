@@ -4,6 +4,7 @@ export default function Layout() {
   return (
     <Stack>
       <Stack.Screen options={{headerShown: false}} name='index' />
+      <Stack.Screen options={{headerShown: false}} name='welcome' />
     </Stack>
   );
 }

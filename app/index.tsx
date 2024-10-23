@@ -1,9 +1,18 @@
+import { router } from "expo-router";
+import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import EyeSlash from "~/assets/EyeSlash";
 import DefaultLayout from "~/components/DefaultLayout";
 
 
 export default function Home() {
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.push({ pathname: "/welcome" })
+    }, 1500)
+  }, [])
+
   return (
     <DefaultLayout style={styles.container}>
       <Text style={styles.title}>HHPI Bank</Text>
