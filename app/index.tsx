@@ -1,10 +1,10 @@
-import { StyleSheet, View } from "react-native";
 import Button from "~/components/Button";
+import DefaultLayout from "~/components/DefaultLayout";
 
 
 export default function Home() {
   return (
-    <View style={styles.container}>
+    <DefaultLayout>
 
       <Button variant="black">
         Connexion
@@ -25,20 +25,6 @@ export default function Home() {
       <Button variant="dark">
         Connexion
       </Button>
-    </View>
+    </DefaultLayout>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    paddingLeft: "5%",
-    paddingRight: "5%",
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: "center",
-    gap: 100
-  },
-});
