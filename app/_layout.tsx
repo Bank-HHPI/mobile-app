@@ -5,6 +5,7 @@ export default function Layout() {
     <Stack>
       <Stack.Screen options={{headerShown: false}} name='index' />
       <Stack.Screen options={{headerShown: false}} name='signup' />
+      <Stack.Screen options={{headerShown: false}} name='signupcode' />
     </Stack>
   );
 }
