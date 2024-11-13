@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         height: 80,
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         alignItems: "center",
     },
     navbarbuttonText: {
