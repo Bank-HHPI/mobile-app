@@ -96,9 +96,10 @@ export default function ConfirmAddressScreen() {
             />
 
             {/* Bouton de confirmation */}
-            <TouchableOpacity style={styles.confirmButton}>
+            <TouchableOpacity style={styles.confirmButton} onPress={() => router.push('confirmCard')}>
                 <Text style={styles.confirmButtonText}>Confirm delivery address</Text>
             </TouchableOpacity>
+
         </View>
     );
 }
