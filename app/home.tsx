@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
+import AccountUtils from '~/components/Home/AccountUtils'
 import Balance from '~/components/Home/Balance'
 import BottomNavigation from '~/components/Home/BottomNavigation'
-import FilterHome from '~/components/Home/FilterHome'
 import Navbar from '~/components/Home/Navbar'
 
 const Home = () => {
 
-    const [activeFilter, setActiveFilter] = useState<"account" | "cards">("cards")
 
     return (
         <View style={styles.container}>
@@ -18,12 +17,9 @@ const Home = () => {
                 style={styles.search}
             />
 
-            <FilterHome
-                activeFilter={activeFilter}
-                setActiveFilter={setActiveFilter}
-            />
-
             <Balance amount={"1500.38"} />
+
+            <AccountUtils />
 
             <BottomNavigation />
         </View>
