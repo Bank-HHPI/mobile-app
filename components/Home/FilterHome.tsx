@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import Filter from './Home/Filter'
+import Filter from './Filter'
 
 interface FilterHomeProps {
     activeFilter: "account" | "cards"

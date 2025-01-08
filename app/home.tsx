@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
-import BottomNavigation from '~/components/BottomNavigation'
-import FilterHome from '~/components/FilterHome'
-import Navbar from '~/components/Navbar'
+import Balance from '~/components/Home/Balance'
+import BottomNavigation from '~/components/Home/BottomNavigation'
+import FilterHome from '~/components/Home/FilterHome'
+import Navbar from '~/components/Home/Navbar'
 
 const Home = () => {
 
@@ -21,6 +22,8 @@ const Home = () => {
                 activeFilter={activeFilter}
                 setActiveFilter={setActiveFilter}
             />
+
+            <Balance amount={"1500.38"} />
 
             <BottomNavigation />
         </View>
