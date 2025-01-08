@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import Card from '~/assets/Card'
 import HomeIcon from '~/assets/HomeIcon'
+import Save from '~/assets/Save'
 
 const BottomNavigation = () => {
 
@@ -12,8 +14,28 @@ const BottomNavigation = () => {
                 onPress={() => setActivePage("home")}
                 style={styles.navbarButton}
             >
-                <Text style={styles.navbarbuttonText}>Home</Text>
-                <HomeIcon size={30} color={activePage === "home" ? "#000" : "737a86"} />
+                <Text style={styles.navbarbuttonText}>
+                    Accueil
+                </Text>
+                <HomeIcon size={30} color={activePage === "home" ? "#000" : "#777777"} />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => setActivePage("transfer")}
+                style={styles.navbarButton}
+            >
+                <Text style={styles.navbarbuttonText}>
+                    Paiement
+                </Text>
+                <Card size={30} color={activePage === "transfer" ? "#000" : "#777777"} />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => setActivePage("save")}
+                style={styles.navbarButton}
+            >
+                <Text style={styles.navbarbuttonText}>
+                    Epargne
+                </Text>
+                <Save size={30} color={activePage === "save" ? "#000" : "#777777"} />
             </TouchableOpacity>
 
         </View>
