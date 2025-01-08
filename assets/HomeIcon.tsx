@@ -1,15 +1,11 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg"
-
-interface Props {
-    color?: string;
-    size?: number;
-}
+import { IconProps } from "~/types"
 
 function HomeIcon({
     color = "#1C1C1E",
     size = 28
-}: Props) {
+}: IconProps) {
     return (
         <Svg
             width={size}
