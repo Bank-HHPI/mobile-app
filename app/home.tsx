@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
+import FilterHome from '~/components/FilterHome'
 import Navbar from '~/components/Navbar'
 
 const Home = () => {
@@ -23,6 +24,13 @@ const Home = () => {
                     fontWeight: "500",
                 }}
             />
+
+            <FilterHome
+                activeFilter={activeFilter}
+                setActiveFilter={setActiveFilter}
+            />
+
+
         </View>
     )
 }
