@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-      router.push({ pathname: "/home" })
+      router.push({ pathname: "/welcome" })
     }, 1500)
   }, [])
 
