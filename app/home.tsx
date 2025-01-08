@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
+import BottomNavigation from '~/components/BottomNavigation'
 import FilterHome from '~/components/FilterHome'
 import Navbar from '~/components/Navbar'
 
 const Home = () => {
 
-    const [activeFilter, setActiveFilter] = useState<"account" | "cards">("account")
+    const [activeFilter, setActiveFilter] = useState<"account" | "cards">("cards")
 
     return (
         <View style={styles.container}>
@@ -29,6 +30,9 @@ const Home = () => {
                 activeFilter={activeFilter}
                 setActiveFilter={setActiveFilter}
             />
+
+
+            <BottomNavigation />
 
 
         </View>

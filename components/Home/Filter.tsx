@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import { TouchableOpacityProps } from 'react-native-gesture-handler'
 
 interface FilterProps extends TouchableOpacityProps {
@@ -8,10 +8,11 @@ interface FilterProps extends TouchableOpacityProps {
 
 const Filter = ({
     variant,
-    children
+    children,
+    ...props
 }: FilterProps) => {
     return (
-        <TouchableOpacity style={[styles.container, styles[variant]]}>
+        <TouchableOpacity style={[styles.container, styles[variant]]} {...props}>
             {children}
         </TouchableOpacity >
     )
@@ -24,9 +25,10 @@ const styles = StyleSheet.create({
         width: "auto",
         height: "auto",
         borderRadius: 50,
-        paddingHorizontal: 8,
-        paddingVertical: 4,
+        paddingHorizontal: 12,
+        paddingVertical: 8,
         fontWeight: "semibold",
+        fontSize: 20,
     },
     active: {
         backgroundColor: "#fff",
