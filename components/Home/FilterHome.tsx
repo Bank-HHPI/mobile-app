@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         height: "auto",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "center",
         marginTop: 20,
         gap: 20,
