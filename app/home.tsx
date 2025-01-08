@@ -14,16 +14,7 @@ const Home = () => {
 
             <TextInput
                 placeholder="Rechercher"
-                style={{
-                    width: "100%",
-                    height: 40,
-                    backgroundColor: "#edeff2",
-                    borderRadius: 50,
-                    paddingLeft: 20,
-                    color: "#777f89",
-                    fontSize: 16,
-                    fontWeight: "500",
-                }}
+                style={styles.search}
             />
 
             <FilterHome
@@ -31,10 +22,7 @@ const Home = () => {
                 setActiveFilter={setActiveFilter}
             />
 
-
             <BottomNavigation />
-
-
         </View>
     )
 }
@@ -50,5 +38,15 @@ export const styles = StyleSheet.create({
         backgroundColor: "#f7f7f7",
         paddingLeft: "5%",
         paddingRight: "5%",
+    },
+    search: {
+        width: "100%",
+        height: 40,
+        backgroundColor: "#edeff2",
+        borderRadius: 50,
+        paddingLeft: 20,
+        color: "#777f89",
+        fontSize: 16,
+        fontWeight: "500",
     }
 })
