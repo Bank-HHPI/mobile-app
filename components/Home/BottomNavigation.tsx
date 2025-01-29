@@ -17,7 +17,7 @@ const BottomNavigation = () => {
                 <Text style={styles.navbarbuttonText}>
                     Accueil
                 </Text>
-                <HomeIcon size={30} color={activePage === "home" ? "#000" : "#777777"} />
+                <HomeIcon size={30} color={activePage === "home" ? "#007AFF" : "#777777"} />
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => setActivePage("transfer")}
@@ -26,7 +26,7 @@ const BottomNavigation = () => {
                 <Text style={styles.navbarbuttonText}>
                     Paiement
                 </Text>
-                <Card size={30} color={activePage === "transfer" ? "#000" : "#777777"} />
+                <Card size={30} color={activePage === "transfer" ? "#007AFF" : "#777777"} />
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => setActivePage("save")}
@@ -35,7 +35,7 @@ const BottomNavigation = () => {
                 <Text style={styles.navbarbuttonText}>
                     Epargne
                 </Text>
-                <Save size={30} color={activePage === "save" ? "#000" : "#777777"} />
+                <Save size={30} color={activePage === "save" ? "#007AFF" : "#777777"} />
             </TouchableOpacity>
 
         </View>

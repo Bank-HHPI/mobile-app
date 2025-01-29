@@ -1,20 +1,26 @@
 import { router } from 'expo-router'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import Add from '~/assets/Add'
+import Details from '~/assets/Details'
+import Euro from '~/assets/Euro'
 
 const AccountUtils = () => {
 
     const utils = [
         {
-            name: "Approvisionner",
+            name: "Ajouter",
+            icon: <Euro color='#ebebed' size={80} />,
             href: "/deposit"
         },
         {
             name: "Informations",
+            icon: <Details color='#000' size={90} />,
             href: "/accountinfos"
         },
         {
-            name: "Ajouter un compte",
+            name: "Comptes",
+            icon: <Add color='#ebebed' size={80} />,
             href: "/addaccount"
         }
     ]
@@ -22,16 +28,15 @@ const AccountUtils = () => {
     return (
         <View style={styles.container}>
             {utils.map((util) => (
-                <TouchableOpacity key={util.name} onPress={() => router.push({ pathname: util.href as any })}>
-                    <View style={styles.utilsIcon}>
-
-                    </View>
+                <TouchableOpacity key={util.name} onPress={() => router.push({ pathname: util.href as any })} style={styles.utils}>
+                    {util.icon}
                     <Text style={styles.utilsText}>
                         {util.name}
                     </Text>
                 </TouchableOpacity>
-            ))}
-        </View>
+            ))
+            }
+        </View >
     )
 }
 
@@ -43,20 +48,19 @@ const styles = StyleSheet.create({
         height: "auto",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-evenly",
+        justifyContent: "space-around",
         alignItems: "center",
     },
-    utilsIcon: {
-        width: 50,
-        height: 50,
+    utils: {
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
     },
     utilsText: {
         width: 100,
         textAlign: "center",
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: "semibold",
     },
 })
