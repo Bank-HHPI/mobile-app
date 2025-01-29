@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Transaction from '../Transaction'
 
 const LastTransactions = () => {
@@ -16,6 +16,12 @@ const LastTransactions = () => {
                 date="12/12/2020"
                 company="Netflix"
             />
+
+            <TouchableOpacity style={styles.seeMoreButton}>
+                <Text style={styles.seeMoreText}>
+                    Voir plus
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -34,4 +40,18 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         gap: 15,
     },
+    seeMoreButton: {
+        width: "100%",
+        height: "auto",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "transparent",
+        borderRadius: 50,
+    },
+    seeMoreText: {
+        color: "#4e59ef",
+        fontSize: 16,
+        fontWeight: "500",
+    }
 })
