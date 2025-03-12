@@ -13,7 +13,7 @@ export default function GetCardScreen() {
             </TouchableOpacity>
 
             {/* Titre */}
-            <Text style={styles.header}>Get a card</Text>
+            <Text style={styles.header}>Obtenir une carte</Text>
 
             {/* Carte Physique */}
             <TouchableOpacity
@@ -25,9 +25,9 @@ export default function GetCardScreen() {
                         <Text style={styles.iconText}>⊖</Text>
                     </View>
                     <View style={styles.textContainer}>
-                        <Text style={styles.cardTitle}>Physical debit card</Text>
+                        <Text style={styles.cardTitle}>Carte de débit physique</Text>
                         <Text style={styles.cardDescription}>
-                            Choose your card design or personalise it, and get it delivered
+                            Choisissez votre design de carte ou personnalisez-la, et recevez-la par courrier
                         </Text>
                     </View>
                     {/* <Image source={require('../assets/physical-card.png')} style={styles.cardImage} /> */}
@@ -44,9 +44,9 @@ export default function GetCardScreen() {
                         <Text style={styles.iconText}>⊖</Text>
                     </View>
                     <View style={styles.textContainer}>
-                        <Text style={styles.cardTitle}>Virtual debit card</Text>
+                        <Text style={styles.cardTitle}>Carte de débit virtuelle</Text>
                         <Text style={styles.cardDescription}>
-                            Get free virtual cards instantly, and try disposable for extra security online
+                            Obtenez des cartes virtuelles gratuites instantanément, et essayez les cartes jetables pour plus de sécurité en ligne
                         </Text>
                     </View>
                     {/* <Image source={require('../assets/virtual-card.png')} style={styles.cardImage} /> */}

@@ -7,11 +7,11 @@ export default function ConfirmAddressScreen() {
 
     // État pour l'adresse et pour activer/désactiver le mode édition
     const [address, setAddress] = useState({
-        line1: 'The Roslin Institute',
-        line2: 'The University of Edinburgh',
-        line3: 'Easter Bush Campus',
-        city: 'Midlothian',
-        postalCode: 'EH25 9RG',
+        line1: 'Institut National des Sciences Appliquées',
+        line2: 'Université de Lyon',
+        line3: 'Campus de la Doua',
+        city: 'Villeurbanne',
+        postalCode: '69100',
     });
     const [isEditing, setIsEditing] = useState(false);
 
@@ -34,41 +34,41 @@ export default function ConfirmAddressScreen() {
                 {/*<Text style={styles.backText}>←</Text>*/}
             </TouchableOpacity>
 
-            <Text style={styles.header}>Confirm PIN</Text>
+            <Text style={styles.header}>Confirmer le code PIN</Text>
 
             {/* Section d'adresse avec Text ou TextInput selon le mode d'édition */}
             <View style={styles.addressContainer}>
-                <Text style={styles.addressTitle}>Delivery address</Text>
+                <Text style={styles.addressTitle}>Adresse de livraison</Text>
 
                 {isEditing ? (
                     <>
                         <TextInput
                             style={styles.input}
-                            placeholder="Address Line 1"
+                            placeholder="Ligne d'adresse 1"
                             value={address.line1}
                             onChangeText={(text) => handleAddressChange('line1', text)}
                         />
                         <TextInput
                             style={styles.input}
-                            placeholder="Address Line 2"
+                            placeholder="Ligne d'adresse 2"
                             value={address.line2}
                             onChangeText={(text) => handleAddressChange('line2', text)}
                         />
                         <TextInput
                             style={styles.input}
-                            placeholder="Address Line 3"
+                            placeholder="Ligne d'adresse 3"
                             value={address.line3}
                             onChangeText={(text) => handleAddressChange('line3', text)}
                         />
                         <TextInput
                             style={styles.input}
-                            placeholder="City"
+                            placeholder="Ville"
                             value={address.city}
                             onChangeText={(text) => handleAddressChange('city', text)}
                         />
                         <TextInput
                             style={styles.input}
-                            placeholder="Postal Code"
+                            placeholder="Code postal"
                             value={address.postalCode}
                             onChangeText={(text) => handleAddressChange('postalCode', text)}
                         />
@@ -85,7 +85,7 @@ export default function ConfirmAddressScreen() {
 
                 {/* Bouton pour basculer en mode édition */}
                 <TouchableOpacity style={styles.editButton} onPress={toggleEditMode}>
-                    <Text style={styles.editButtonText}>{isEditing ? 'Save' : 'Edit'}</Text>
+                    <Text style={styles.editButtonText}>{isEditing ? 'Enregistrer' : 'Modifier'}</Text>
                 </TouchableOpacity>
             </View>
 
@@ -97,7 +97,7 @@ export default function ConfirmAddressScreen() {
 
             {/* Bouton de confirmation */}
             <TouchableOpacity style={styles.confirmButton} onPress={() => router.push('confirmCard')}>
-                <Text style={styles.confirmButtonText}>Confirm delivery address</Text>
+                <Text style={styles.confirmButtonText}>Confirmer l'adresse de livraison</Text>
             </TouchableOpacity>
 
         </View>

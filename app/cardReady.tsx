@@ -8,10 +8,10 @@ export default function CardReady() {
     return (
         <View style={styles.container}>
             {/* Header Text */}
-            <Text style={styles.headerTitle}>Your debit card is ready!</Text>
+            <Text style={styles.headerTitle}>Votre carte bancaire est prête !</Text>
             <Text style={styles.subTitle}>
-                Want to start spending now? No problem!{'\n'}
-                You can use your card details to shop online. They’re in the ‘Cards’ section
+                Vous souhaitez commencer à dépenser dès maintenant ? Aucun souci !{'\n'}
+                 Vous pouvez utiliser les détails de votre carte pour effectuer des achats en ligne. Ils sont dans la section « Cartes ».
             </Text>
 
             {/* Card Image */}

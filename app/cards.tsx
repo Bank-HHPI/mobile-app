@@ -8,53 +8,53 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      {/* En-tête */}
       <View style={styles.header}>
         <View style={styles.profileContainer}>
           <Text style={styles.profileIcon}>DS</Text>
         </View>
-        <Text style={styles.title}>Home</Text>
+        <Text style={styles.title}>Accueil</Text>
         <Icon name="notifications-outline" size={24} color="#000" />
       </View>
 
-      {/* Search Bar */}
+      {/* Barre de recherche */}
       <View style={styles.searchContainer}>
         <Icon name="search-outline" size={20} color="#888" />
-        <TextInput placeholder="Search" style={styles.searchInput} />
+        <TextInput placeholder="Rechercher" style={styles.searchInput} />
       </View>
 
-      {/* Tabs */}
+      {/* Onglets */}
       <View style={styles.tabsContainer}>
-        <Text style={styles.tab}>Accounts</Text>
-        <Text style={[styles.tab, styles.activeTab]}>Cards</Text>
-        <Text style={styles.tab}>Linked</Text>
+        <Text style={styles.tab}>Comptes</Text>
+        <Text style={[styles.tab, styles.activeTab]}>Cartes</Text>
+        <Text style={styles.tab}>Liés</Text>
       </View>
 
-      {/* Modal Section */}
+      {/* Section Modale */}
       <ScrollView style={styles.modalContainer} showsVerticalScrollIndicator={false}>
-        {/* Get Card */}
+        {/* Obtenir une carte */}
         <TouchableOpacity
           style={styles.getCardButton}
           onPress={() => router.push('/getCards')}
         >
           <Icon name="add-circle-outline" size={20} color="#007bff" />
-          <Text style={styles.getCardText}>Get card</Text>
+          <Text style={styles.getCardText}>Obtenir une carte</Text>
         </TouchableOpacity>
 
-        {/* Virtual Card */}
+        {/* Carte virtuelle */}
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Disposable virtual card</Text>
-          <Text style={styles.cardSubtitle}>For safe online use</Text>
+          <Text style={styles.cardTitle}>Carte virtuelle jetable</Text>
+          <Text style={styles.cardSubtitle}>Pour une utilisation en ligne sécurisée</Text>
         </View>
 
-        {/* Physical Card */}
+        {/* Carte physique */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Standard</Text>
-          <Text style={styles.cardWarning}>Complete your order</Text>
+          <Text style={styles.cardWarning}>Finalisez votre commande</Text>
         </View>
       </ScrollView>
 
-      {/* Bottom Navigation */}
+      {/* Navigation en bas */}
       <View style={styles.bottomNav}>
         <Icon name="home-outline" size={24} color="#007bff" />
         <Icon name="swap-horizontal-outline" size={24} color="#888" />

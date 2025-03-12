@@ -3,103 +3,102 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 
 export default function ConfirmCard() {
-    const [selectedAmount, setSelectedAmount] = useState(10); // Montant sélectionné
+    const [montantSelectionne, setMontantSelectionne] = useState(10); // Montant sélectionné
 
-    const handleAmountChange = (amount) => {
-        setSelectedAmount(amount);
+    const gererChangementMontant = (montant) => {
+        setMontantSelectionne(montant);
     };
 
     return (
         <ScrollView style={styles.container}>
-            {/* Header */}
+            {/* En-tête */}
             <View style={styles.header}>
                 {/* <TouchableOpacity>
                     <Text style={styles.backText}>←</Text>
                 </TouchableOpacity> */}
-                <Text style={styles.title}>Checkout</Text>
+                <Text style={styles.title}>Paiement</Text>
                 <TouchableOpacity>
-                    <Text style={styles.notNowText}>Not now</Text>
+                    <Text style={styles.notNowText}>Plus tard</Text>
                 </TouchableOpacity>
             </View>
 
-            {/* Plan, Card, Card Delivery Sections */}
+            {/* Sections Plan, Carte, Livraison de la carte */}
             <View style={styles.sectionContainer}>
                 <View style={styles.sectionRow}>
                     <Text style={styles.sectionTitle}>Plan</Text>
-                    <Text style={styles.sectionValue}>Standard · Free</Text>
+                    <Text style={styles.sectionValue}>Standard · Gratuit</Text>
                 </View>
                 <View style={styles.sectionRow}>
-                    <Text style={styles.sectionTitle}>Card</Text>
-                    <Text style={styles.sectionValue}>Standard · Free</Text>
+                    <Text style={styles.sectionTitle}>Carte</Text>
+                    <Text style={styles.sectionValue}>Standard · Gratuit</Text>
                 </View>
                 <View style={styles.sectionRow}>
-                    <Text style={styles.sectionTitle}>Card delivery</Text>
-                    <Text style={styles.sectionValue}>Standard · £4.99</Text>
+                    <Text style={styles.sectionTitle}>Livraison carte</Text>
+                    <Text style={styles.sectionValue}>Standard · 4,99€</Text>
                 </View>
             </View>
 
-            {/* Add Money to Spend Later */}
+            {/* Ajouter de l'argent à dépenser plus tard */}
             <View style={styles.sectionContainer}>
                 <View style={styles.sectionHeader}>
-                    <Text style={styles.sectionTitle}>Add money to spend later</Text>
-                    <Text style={styles.selectedAmountText}>£{selectedAmount}</Text>
+                    <Text style={styles.sectionTitle}>Ajouter de l'argent</Text>
+                    <Text style={styles.selectedAmountText}>{montantSelectionne}€</Text>
                 </View>
                 <View style={styles.amountButtonsContainer}>
-                    {[0, 10, 20, 50].map((amount) => (
+                    {[0, 10, 20, 50].map((montant) => (
                         <TouchableOpacity
-                            key={amount}
+                            key={montant}
                             style={[
                                 styles.amountButton,
-                                selectedAmount === amount && styles.amountButtonSelected,
+                                montantSelectionne === montant && styles.amountButtonSelected,
                             ]}
-                            onPress={() => handleAmountChange(amount)}
+                            onPress={() => gererChangementMontant(montant)}
                         >
                             <Text
                                 style={[
                                     styles.amountButtonText,
-                                    selectedAmount === amount && styles.amountButtonTextSelected,
+                                    montantSelectionne === montant && styles.amountButtonTextSelected,
                                 ]}
                             >
-                                £{amount}
+                                {montant}€
                             </Text>
                         </TouchableOpacity>
                     ))}
                     <TouchableOpacity style={styles.otherButton}>
-                        <Text style={styles.amountButtonText}>Other</Text>
+                        <Text style={styles.amountButtonText}>Autre</Text>
                     </TouchableOpacity>
                 </View>
             </View>
 
-            {/* Total Amount */}
+            {/* Montant Total */}
             <View style={styles.sectionContainer}>
                 <View style={styles.sectionHeader}>
-                    <Text style={styles.sectionTitle}>Total amount</Text>
-                    <Text style={styles.totalAmountText}>£{(selectedAmount + 4.99).toFixed(2)}</Text>
+                    <Text style={styles.sectionTitle}>Montant total</Text>
+                    <Text style={styles.totalAmountText}>{(montantSelectionne + 4.99).toFixed(2)}€</Text>
                 </View>
             </View>
 
-            {/* Add Debit Card Section */}
+            {/* Ajouter une carte bancaire */}
             <View style={styles.sectionContainer}>
                 <View style={styles.cardRow}>
                     <Image
-                        source={{ uri: 'https://via.placeholder.com/50' }} // Placeholder image
+                        source={{ uri: 'https://via.placeholder.com/50' }} // Image de substitution
                         style={styles.cardIcon}
                     />
                     <View style={styles.cardDetails}>
-                        <Text style={styles.addCardText}>Add debit card</Text>
-                        <Text style={styles.cardDetailsText}>Card details added securely</Text>
+                        <Text style={styles.addCardText}>Ajouter une carte bancaire</Text>
+                        <Text style={styles.cardDetailsText}>Détails ajoutés de manière sécurisée</Text>
                     </View>
                     <TouchableOpacity>
-                        <Text style={styles.changeText}>Change</Text>
+                        <Text style={styles.changeText}>Modifier</Text>
                     </TouchableOpacity>
                 </View>
             </View>
 
-            {/* Pay Button */}
+            {/* Bouton Payer */}
             <TouchableOpacity style={styles.payButton} onPress={() => router.push('cardReady')}>
-                <Text style={styles.payButtonText}>Pay</Text>
+                <Text style={styles.payButtonText}>Payer</Text>
             </TouchableOpacity>
-
 
         </ScrollView>
     );
