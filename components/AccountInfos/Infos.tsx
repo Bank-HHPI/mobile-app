@@ -1,5 +1,6 @@
+import Clipboard from '@react-native-clipboard/clipboard'
 import React from 'react'
-import { Clipboard, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import ClipboardAsset from '~/assets/Clipboard'
 
 interface InfosProps {
