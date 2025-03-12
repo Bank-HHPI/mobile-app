@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, TextInput, View } from 'react-native'
+import { ScrollView, StyleSheet, TextInput, View } from 'react-native'
 import AccountUtils from '~/components/Home/AccountUtils'
 import Balance from '~/components/Home/Balance'
 import BottomNavigation from '~/components/Home/BottomNavigation'
@@ -19,11 +19,13 @@ const Home = () => {
                 style={styles.search}
             />
 
-            <Balance amount={"1500.38"} />
-            <AccountUtils />
-            <LastTransactions />
+            <ScrollView style={{ width: "100%" }} showsVerticalScrollIndicator={false}>
+                <Balance amount={"1500.38"} />
+                <AccountUtils />
+                <LastTransactions />
+                <Cards />
+            </ScrollView>
             <BottomNavigation />
-            <Cards />
         </View>
     )
 }
@@ -39,6 +41,7 @@ export const styles = StyleSheet.create({
         backgroundColor: "#f7f7f7",
         paddingLeft: "5%",
         paddingRight: "5%",
+        paddingBottom: 100,
     },
     search: {
         width: "100%",
