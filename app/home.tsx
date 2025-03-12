@@ -3,6 +3,7 @@ import { StyleSheet, TextInput, View } from 'react-native'
 import AccountUtils from '~/components/Home/AccountUtils'
 import Balance from '~/components/Home/Balance'
 import BottomNavigation from '~/components/Home/BottomNavigation'
+import Cards from '~/components/Home/Cards'
 import LastTransactions from '~/components/Home/LastTransactions'
 import Navbar from '~/components/Home/Navbar'
 
@@ -19,12 +20,10 @@ const Home = () => {
             />
 
             <Balance amount={"1500.38"} />
-
             <AccountUtils />
-
             <LastTransactions />
-
             <BottomNavigation />
+            <Cards />
         </View>
     )
 }

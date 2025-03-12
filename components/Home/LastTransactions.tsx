@@ -1,25 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Transaction from '../Transaction'
 
 const LastTransactions = () => {
+
+    const [limit, setLimit] = useState<number>(2)
+
+    const handleTransactionClick = () => {
+        if (limit === 2) {
+            setLimit(transactions.length)
+        } else {
+            setLimit(2)
+        }
+    }
+
+    const transactions = [
+        {
+            amount: "-100.00",
+            date: "12/12/2020",
+            company: "Amazon"
+        },
+        {
+            amount: "-30.00",
+            date: "12/12/2020",
+            company: "Netflix"
+        },
+        {
+            amount: "-100.00",
+            date: "12/12/2020",
+            company: "Amazon"
+        }
+    ]
+
     return (
         <View style={styles.container}>
-            <Transaction
-                amount="-100.00"
-                date="12/12/2020"
-                company="Amazon"
-            />
+            {
+                transactions.slice(0, limit).map((transaction, index) => (
+                    <Transaction
+                        key={index}
+                        amount={transaction.amount}
+                        date={transaction.date}
+                        company={transaction.company}
+                    />
+                ))
+            }
 
-            <Transaction
-                amount="-30.00"
-                date="12/12/2020"
-                company="Netflix"
-            />
-
-            <TouchableOpacity style={styles.seeMoreButton}>
+            <TouchableOpacity style={styles.seeMoreButton} onPress={handleTransactionClick}>
                 <Text style={styles.seeMoreText}>
-                    Voir plus
+                    Voir {limit === 2 ? "plus" : "moins"}
                 </Text>
             </TouchableOpacity>
         </View>
@@ -36,7 +64,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: "#fff",
         marginTop: 20,
-        borderRadius: 12,
+        borderRadius: 16,
         paddingVertical: 20,
         gap: 15,
     },
