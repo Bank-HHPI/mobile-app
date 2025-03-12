@@ -36,6 +36,18 @@ const accountInfos = () => {
                     title="Bénéficiaire"
                     value={accountInfos.beneficiary}
                 />
+                <Infos
+                    title="IBAN"
+                    value={accountInfos.iban}
+                />
+                <Infos
+                    title="BIC"
+                    value={accountInfos.bic}
+                />
+                <Infos
+                    title="Adresse"
+                    value={accountInfos.address}
+                />
             </View>
         </View>
     )
@@ -71,7 +83,7 @@ export const styles = StyleSheet.create({
         borderRadius: 16,
         paddingVertical: 20,
         paddingHorizontal: 20,
-        gap: 25,
+        gap: 10,
     },
     accountInfosTitle: {
         fontSize: 20,

@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
-import Clipboard from '~/assets/Clipboard'
+import { Clipboard, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import ClipboardAsset from '~/assets/Clipboard'
 
 interface InfosProps {
     title: string
@@ -12,6 +12,11 @@ const Infos = ({
     title,
     value
 }: InfosProps) => {
+
+    const copyToClipboard = (value: string) => {
+        Clipboard.setString(value)
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>
@@ -21,8 +26,8 @@ const Infos = ({
                 <Text style={styles.value}>
                     {value}
                 </Text>
-                <TouchableOpacity>
-                    <Clipboard size={20} color='#007AFF' />
+                <TouchableOpacity onPress={() => copyToClipboard(value)}>
+                    <ClipboardAsset size={18} color='#007AFF' />
                 </TouchableOpacity>
             </View>
         </View>
@@ -41,8 +46,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         marginTop: 20,
         borderRadius: 16,
-        paddingVertical: 20,
-        paddingHorizontal: 20,
         gap: 10,
     },
     title: {
