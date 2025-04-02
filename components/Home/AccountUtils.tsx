@@ -5,7 +5,13 @@ import Add from '~/assets/Add'
 import Details from '~/assets/Details'
 import Euro from '~/assets/Euro'
 
-const AccountUtils = () => {
+interface AccountUtilsProps {
+    setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const AccountUtils = ({
+    setShowModal
+}: AccountUtilsProps) => {
 
     const utils = [
         {
