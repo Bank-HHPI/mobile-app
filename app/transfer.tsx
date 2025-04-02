@@ -1,3 +1,4 @@
+import { router } from 'expo-router'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import LeftArrow from '~/assets/LeftArrow'
@@ -7,7 +8,7 @@ const Transfer = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton}>
+                <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
                     <LeftArrow size={30} color="#000" />
                 </TouchableOpacity>
                 <Text style={styles.title}>
