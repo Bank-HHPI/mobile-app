@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import { useRouter } from 'expo-router';
+import MapComponent from './components/Map';
 
 export default function ConfirmAddressScreen() {
     const router = useRouter();
@@ -16,7 +17,7 @@ export default function ConfirmAddressScreen() {
     const [isEditing, setIsEditing] = useState(false);
 
     // Fonction pour gérer la mise à jour d'une ligne d'adresse
-    const handleAddressChange = (key, value) => {
+    const handleAddressChange = (key: string, value: string) => {
         setAddress(prevAddress => ({
             ...prevAddress,
             [key]: value,
@@ -34,7 +35,7 @@ export default function ConfirmAddressScreen() {
                 {/*<Text style={styles.backText}>←</Text>*/}
             </TouchableOpacity>
 
-            <Text style={styles.header}>Confirmer le code PIN</Text>
+            <Text style={styles.header}>Confirmer l'adresse</Text>
 
             {/* Section d'adresse avec Text ou TextInput selon le mode d'édition */}
             <View style={styles.addressContainer}>
@@ -89,17 +90,16 @@ export default function ConfirmAddressScreen() {
                 </TouchableOpacity>
             </View>
 
-            {/* Image de la carte */}
-            <Image
-                source={{ uri: 'https://via.placeholder.com/300x150.png?text=Map+Placeholder' }}
-                style={styles.mapImage}
+            {/* Carte */}
+            <MapComponent 
+                style={styles.mapContainer} 
+                address={address}
             />
 
             {/* Bouton de confirmation */}
-            <TouchableOpacity style={styles.confirmButton} onPress={() => router.push('confirmCard')}>
+            <TouchableOpacity style={styles.confirmButton} onPress={() => router.push('/confirmCard')}>
                 <Text style={styles.confirmButtonText}>Confirmer l'adresse de livraison</Text>
             </TouchableOpacity>
-
         </View>
     );
 }
@@ -159,10 +159,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 14,
     },
-    mapImage: {
-        width: '100%',
-        height: 150,
-        borderRadius: 16,
+    mapContainer: {
         marginBottom: 20,
     },
     confirmButton: {
