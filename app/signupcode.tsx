@@ -1,9 +1,10 @@
 import React from 'react';
-import Button from "~/components/Button";
 import DefaultLayout from "~/components/DefaultLayout";
 import { Text, StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
-import Svg, { G, Path, Defs, ClipPath } from "react-native-svg";
+import Svg, { Path } from "react-native-svg";
 import { router, useLocalSearchParams } from 'expo-router';
+import Delete from '~/assets/Delete';
+import Enter from '~/assets/Enter';
 
 
 export default function SignupCode() {
@@ -43,6 +44,53 @@ export default function SignupCode() {
                 </Text>
             </View>
             <Text style={styles.link}>Vous avez déjà un compte ? Se connecter </Text>
+            <View style={styles.keyboard_container}>
+                <View style={styles.keyboard_inputs}>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>1</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>2</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>3</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.keyboard_inputs}>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>4</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>5</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>6</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.keyboard_inputs}>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>7</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>8</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>9</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.keyboard_inputs}>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Delete/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Text>0</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.keyboard_input}>
+                        <Enter/>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
         </DefaultLayout>
     );
 }
@@ -78,7 +126,9 @@ const styles = StyleSheet.create({
     code_input: {
         backgroundColor: '#E0E3E7',
         padding: 22,
+        width: "15%",
         borderRadius: 12,
+        textAlign: 'center',
     },
     code_text: {
         fontSize: 36,
@@ -91,4 +141,30 @@ const styles = StyleSheet.create({
     link: {
         color: '#2c64e3',
     },
+    keyboard_inputs: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        width: '100%',
+        paddingTop: '10%',
+    },
+    keyboard_input: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#E0E3E7',
+        padding: 22,
+        borderRadius: 12,
+        width: '30%',
+        height: '80%',
+    },
+    keyboard_container: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        paddingLeft: '10%',
+        paddingRight: '10%',
+    },
+
 });
