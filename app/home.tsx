@@ -5,6 +5,7 @@ import Balance from '~/components/Home/Balance'
 import BottomNavigation from '~/components/Home/BottomNavigation'
 import Cards from '~/components/Home/Cards'
 import LastTransactions from '~/components/Home/LastTransactions'
+import Modal from '~/components/Home/Modal'
 import Navbar from '~/components/Home/Navbar'
 
 const Home = () => {
@@ -26,6 +27,8 @@ const Home = () => {
                 <Cards />
             </ScrollView>
             <BottomNavigation />
+
+            <Modal />
         </View>
     )
 }
@@ -42,6 +45,7 @@ export const styles = StyleSheet.create({
         paddingLeft: "5%",
         paddingRight: "5%",
         paddingBottom: 100,
+        position: "relative",
     },
     search: {
         width: "100%",
