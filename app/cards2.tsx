@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions, FlatList, ScrollView, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from '@react-navigation/native';
 
@@ -7,19 +7,19 @@ const { width: screenWidth } = Dimensions.get('window');
 
 const cardData = [
   {
-    uri: "https://via.placeholder.com/300x200?text=Carte+1",
-    title: "Carte 1",
-    description: "Description spécifique pour Carte 1.",
+    title: "Standard",
+    cardNumber: "•• 7560",
+    description: "Notre carte sans contact standard, fabriquée en plastique avec une finition métallique brillante.",
   },
   {
-    uri: "https://via.placeholder.com/300x200?text=Carte+2",
-    title: "Carte 2",
-    description: "Description spécifique pour Carte 2.",
+    title: "Premium",
+    cardNumber: "•• 8921",
+    description: "Notre carte premium avec des avantages exclusifs et un service prioritaire.",
   },
   {
-    uri: "https://via.placeholder.com/300x200?text=Carte+3",
-    title: "Carte 3",
-    description: "Description spécifique pour Carte 3.",
+    title: "Metal",
+    cardNumber: "•• 3458",
+    description: "Carte en métal véritable avec des avantages premium et un statut exclusif.",
   },
 ];
 
@@ -34,14 +34,43 @@ const PhysicalCardScreen = () => {
 
   const renderItem = ({ item }) => (
     <View style={[styles.cardContainer, { width: cardWidth, marginHorizontal: cardMargin }]}>
-      <Image source={{ uri: item.uri }} style={styles.cardImage} />
-      <Text style={styles.cardTitle}>{item.title}</Text>
+      <View style={styles.cardImageContainer}>
+        <View style={styles.cardOverlay}>
+          <Text style={styles.cardOverlayTitle}>{item.title}</Text>
+          <Text style={styles.cardNumber}>{item.cardNumber}</Text>
+          <Text style={styles.cardLogo}>VISA</Text>
+        </View>
+      </View>
     </View>
   );
 
-  const handleMomentumScrollEnd = (event) => {
-    const index = Math.round(event.nativeEvent.contentOffset.x / snapToInterval);
-    setActiveIndex(index);
+  const updateActiveIndex = (offset: number) => {
+    const index = Math.round(offset / snapToInterval);
+    if (index >= 0 && index < cardData.length && index !== activeIndex) {
+      setActiveIndex(index);
+      console.log('Carte active:', index, cardData[index].title);
+    }
+  };
+
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const contentOffset = event.nativeEvent.contentOffset.x;
+    updateActiveIndex(contentOffset);
+  };
+
+  const handleMomentumScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const contentOffset = event.nativeEvent.contentOffset.x;
+    updateActiveIndex(contentOffset);
+  };
+
+  // Fonction pour naviguer entre les cartes
+  const goToCard = (index: number) => {
+    if (index >= 0 && index < cardData.length) {
+      flatListRef.current?.scrollToOffset({ 
+        offset: index * snapToInterval,
+        animated: true
+      });
+      setActiveIndex(index);
+    }
   };
 
   return (
@@ -63,20 +92,27 @@ const PhysicalCardScreen = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: cardMargin }}
+        onScroll={handleScroll}
         onMomentumScrollEnd={handleMomentumScrollEnd}
-        snapToInterval={snapToInterval} // Largeur totale par carte
+        snapToInterval={snapToInterval}
         decelerationRate="fast"
         snapToAlignment="center"
-        // pagingEnabled={false} // Optionnel : désactiver si conflit avec snapToInterval
         style={styles.flatList}
-        // bounces={false} // Optionnel : empêche le rebond en fin de liste
+        initialScrollIndex={0}
+        getItemLayout={(data, index) => ({
+          length: cardWidth + cardMargin * 2,
+          offset: (cardWidth + cardMargin * 2) * index,
+          index,
+        })}
+        scrollEventThrottle={16}
       />
 
       {/* Indicateurs de Pagination */}
       <View style={styles.paginationContainer}>
         {cardData.map((_, index) => (
-          <View
+          <TouchableOpacity
             key={index}
+            onPress={() => goToCard(index)}
             style={[
               styles.paginationDot,
               index === activeIndex ? styles.activeDot : styles.inactiveDot,
@@ -96,9 +132,9 @@ const PhysicalCardScreen = () => {
       </TouchableOpacity>
 
       {/* Détails de la Carte */}
-      <Text style={styles.cardTitle}>Standard</Text>
+      <Text style={styles.cardTitle}>{cardData[activeIndex].title}</Text>
       <Text style={styles.cardDescription}>
-        Notre carte sans contact standard, fabriquée en plastique avec une finition métallique brillante
+        {cardData[activeIndex].description}
       </Text>
 
       {/* Sélecteur de Couleur */}
@@ -109,7 +145,7 @@ const PhysicalCardScreen = () => {
 
       {/* Bouton Obtenir la Carte Standard */}
       <TouchableOpacity style={styles.getCardButton}>
-        <Text style={styles.getCardButtonText}>Obtenir Standard*</Text>
+        <Text style={styles.getCardButtonText}>Obtenir {cardData[activeIndex].title}*</Text>
       </TouchableOpacity>
     </View>
   );
@@ -138,6 +174,35 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     alignItems: "center",
+  },
+  cardImageContainer: {
+    width: "100%",
+    height: 200,
+    backgroundColor: '#3B82F6',
+    borderRadius: 10,
+    padding: 20,
+    justifyContent: 'space-between',
+  },
+  cardOverlay: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  cardOverlayTitle: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  cardNumber: {
+    color: '#fff',
+    fontSize: 22,
+    marginTop: 10,
+  },
+  cardLogo: {
+    alignSelf: 'flex-end',
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 50,
   },
   cardImage: {
     width: "100%",

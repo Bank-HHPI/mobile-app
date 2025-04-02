@@ -12,7 +12,7 @@ export default function Layout() {
         <Stack.Screen options={{ headerShown: true }} name="cardReady" />
         <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name='cards' />
         <Stack.Screen options={{ headerShown: true }} name="getCards" />
-        <Stack.Screen options={{ headerShown: true }} name="card2" />
+        <Stack.Screen options={{ headerShown: true }} name="card2"   />
     </Stack>
   );
 }
