@@ -6,6 +6,7 @@ export default function Layout() {
       <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name='index' />
       <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name='welcome' />
       <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name='home' />
+      <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name='login' />
       <Stack.Screen options={{ headerShown: false, gestureEnabled: false, presentation: "transparentModal" }} name='accountinfos' />
       <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name='addaccount' />
       <Stack.Screen name='profile' options={{
