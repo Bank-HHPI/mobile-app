@@ -1,6 +1,7 @@
 import { router } from "expo-router";
 import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
+
 import EyeSlash from "~/assets/EyeSlash";
 import DefaultLayout from "~/components/DefaultLayout";
 

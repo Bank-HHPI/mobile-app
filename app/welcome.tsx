@@ -1,25 +1,26 @@
-import { router } from 'expo-router'
-import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
-import Button from '~/components/Button'
-import DefaultLayout from '~/components/DefaultLayout'
+import { router } from "expo-router"
+import React from "react"
+import { Image, StyleSheet, Text, View } from "react-native"
+
+import Button from "~/components/Button"
+import DefaultLayout from "~/components/DefaultLayout"
 
 const Welcome = () => {
     return (
         <DefaultLayout black style={styles.container}>
             <View style={styles.top}>
-                <Image source={require('../assets/logo.png')} style={styles.image} />
+                <Image source={require("../assets/logo.png")} style={styles.image} />
                 <Text style={styles.topTitle}>Bienvenue sur HHPI Bank</Text>
             </View>
 
             <Text style={styles.title}>Gérer son argent avec HHPI devient facile</Text>
 
             <View style={styles.bottom}>
-                <Button variant='black' width="47%" onPress={() => router.push({pathname: "/login"})}>
+                <Button variant="black" width="47%" onPress={() => router.push({pathname: "/login"})}>
                     Connexion
                 </Button>
 
-                <Button variant='white' width="47%" onPress={() => router.push({pathname: "/signup"})}>
+                <Button variant="white" width="47%" onPress={() => router.push({pathname: "/signup"})}>
                     Inscription
                 </Button>
             </View>
