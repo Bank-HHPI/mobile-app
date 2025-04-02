@@ -9,6 +9,7 @@ export default function Layout() {
       <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name='login' />
       <Stack.Screen options={{ headerShown: false, gestureEnabled: false, presentation: "transparentModal" }} name='accountinfos' />
       <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name='addaccount' />
+      <Stack.Screen options={{ headerShown: false, gestureEnabled: false }} name='transfer' />
       <Stack.Screen name='profile' options={{
         headerShown: false, gestureEnabled: true, presentation: "modal", contentStyle: {
           height: "100%", maxHeight: "100%", justifyContent: "flex-end", backgroundColor: "transparent"
