@@ -21,7 +21,7 @@ import Tr from "../assets/flags/tr.svg";
 import Us from "../assets/flags/us.svg";
 import Ve from "../assets/flags/ve.svg";
 
-const FlagWidth = 40;
+const FlagWidth = 50;
 
 export const accountsTypes = [
     {

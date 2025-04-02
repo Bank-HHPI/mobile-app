@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 interface CountryAccountProps {
     country: React.ReactNode
@@ -14,10 +14,20 @@ const CountryAccount = ({
 }: CountryAccountProps) => {
 
     return (
-        <View style={styles.container}>
-            {country}
+        <TouchableOpacity style={styles.container}>
+            <View style={styles.country}>
+                {country}
+            </View>
+            <View style={styles.infos}>
+                <Text style={styles.titleText}>
+                    {title}
+                </Text>
+                <Text style={styles.currencyText}>
+                    {currency}
+                </Text>
+            </View>
 
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -29,8 +39,35 @@ const styles = StyleSheet.create({
         height: "auto",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         alignItems: "center",
         paddingVertical: 20,
+        paddingHorizontal: 20,
     },
+    country: {
+        width: 50,
+        height: 50,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    infos: {
+        width: "auto",
+        height: "auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        marginLeft: 20,
+    },
+    titleText: {
+        fontSize: 18,
+        fontWeight: "500",
+        color: "#000",
+    },
+    currencyText: {
+        fontSize: 16,
+        fontWeight: "500",
+        color: "#737a86",
+    }
 })

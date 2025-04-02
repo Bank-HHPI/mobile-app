@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
         height: "auto",
         display: "flex",
         flexDirection: "column",
-        gap: 20,
     },
     search: {
         width: "100%",
@@ -85,6 +84,7 @@ const styles = StyleSheet.create({
         color: "#777f89",
         fontSize: 16,
         fontWeight: "500",
+        marginBottom: 20,
     },
     contriesList: {
         width: "100%",
@@ -95,5 +95,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         gap: 20,
         backgroundColor: "#fff",
+        borderRadius: 16,
     }
 })
