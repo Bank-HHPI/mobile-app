@@ -2,9 +2,18 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Add from '~/assets/Add'
 
-const Modal = () => {
+interface ModalProps {
+    setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Modal = ({ setShowModal }: ModalProps) => {
+
+    const handleClose = () => {
+        setShowModal(false)
+    }
+
     return (
-        <View style={styles.container}>
+        <View style={styles.container} onTouchEnd={handleClose}>
             <View style={styles.modal}>
                 <View style={styles.modalClose} />
 
