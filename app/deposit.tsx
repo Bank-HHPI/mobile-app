@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         gap: 20,
         marginTop: 20,
+        paddingTop: 20,
     },
     button: {
         position: "absolute",
