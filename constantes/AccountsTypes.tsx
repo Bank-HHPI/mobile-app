@@ -27,106 +27,127 @@ export const accountsTypes = [
     {
         title: "Dirham des Émirats",
         currency: "AED",
-        country: <Ae width={FlagWidth} height={FlagWidth} />
+        country: <Ae width={FlagWidth} height={FlagWidth} />,
+        countryName: "Emirats Arabes Unis"
     },
     {
         title: "Peso Argentin",
         currency: "ARS",
-        country: <Ar width={FlagWidth} height={FlagWidth} />
+        country: <Ar width={FlagWidth} height={FlagWidth} />,
+        countryName: "Argentine"
     },
     {
         title: "Dollar Australien",
         currency: "AUD",
-        country: <Au width={FlagWidth} height={FlagWidth} />
+        country: <Au width={FlagWidth} height={FlagWidth} />,
+        countryName: "Australie"
     },
     {
         title: "Real Brésilien",
         currency: "BRL",
-        country: <Br width={FlagWidth} height={FlagWidth} />
+        country: <Br width={FlagWidth} height={FlagWidth} />,
+        countryName: "Brésil"
     },
     {
         title: "Dollar Canadien",
         currency: "CAD",
-        country: <Ca width={FlagWidth} height={FlagWidth} />
+        country: <Ca width={FlagWidth} height={FlagWidth} />,
+        countryName: "Canada"
     },
     {
         title: "Yuan Chinois",
         currency: "CNY",
-        country: <Cn width={FlagWidth} height={FlagWidth} />
+        country: <Cn width={FlagWidth} height={FlagWidth} />,
+        countryName: "Chine"
     },
     {
         title: "Peso Colombien",
         currency: "COP",
-        country: <Co width={FlagWidth} height={FlagWidth} />
+        country: <Co width={FlagWidth} height={FlagWidth} />,
+        countryName: "Colombie"
     },
     {
         title: "Couronne Danoise",
         currency: "DKK",
-        country: <Dk width={FlagWidth} height={FlagWidth} />
+        country: <Dk width={FlagWidth} height={FlagWidth} />,
+        countryName: "Danemark"
     },
     {
         title: "Dinar Algérien",
         currency: "DZD",
-        country: <Dz width={FlagWidth} height={FlagWidth} />
+        country: <Dz width={FlagWidth} height={FlagWidth} />,
+        countryName: "Algérie"
     },
     {
         title: "Euro",
         currency: "EUR",
-        country: <Eu width={FlagWidth} height={FlagWidth} />
+        country: <Eu width={FlagWidth} height={FlagWidth} />,
+        countryName: "Union Européenne"
     },
     {
         title: "Livre Sterling",
         currency: "GBP",
-        country: <Gb width={FlagWidth} height={FlagWidth} />
+        country: <Gb width={FlagWidth} height={FlagWidth} />,
+        countryName: "Royaume-Uni"
     },
     {
         title: "Roupie Indienne",
         currency: "INR",
-        country: <In width={FlagWidth} height={FlagWidth} />
+        country: <In width={FlagWidth} height={FlagWidth} />,
+        countryName: "Inde"
     },
     {
         title: "Yen Japonais",
         currency: "JPY",
-        country: <Jp width={FlagWidth} height={FlagWidth} />
+        country: <Jp width={FlagWidth} height={FlagWidth} />,
+        countryName: "Japon"
     },
     {
         title: "Won Sud-Coréen",
         currency: "KRW",
-        country: <Kr width={FlagWidth} height={FlagWidth} />
+        country: <Kr width={FlagWidth} height={FlagWidth} />,
+        countryName: "Corée du Sud"
     },
     {
         title: "Dirham Marocain",
         currency: "MAD",
-        country: <Ma width={FlagWidth} height={FlagWidth} />
+        country: <Ma width={FlagWidth} height={FlagWidth} />,
+        countryName: "Maroc"
     },
     {
         title: "Riyal Qatari",
         currency: "QAR",
-        country: <Qa width={FlagWidth} height={FlagWidth} />
+        country: <Qa width={FlagWidth} height={FlagWidth} />,
+        countryName: "Qatar"
     },
     {
         title: "Riyal Saoudien",
         currency: "SAR",
-        country: <Sa width={FlagWidth} height={FlagWidth} />
+        country: <Sa width={FlagWidth} height={FlagWidth} />,
+        countryName: "Arabie Saoudite"
     },
     {
         title: "Dinar Tunisien",
         currency: "TND",
-        country: <Tn width={FlagWidth} height={FlagWidth} />
+        country: <Tn width={FlagWidth} height={FlagWidth} />,
+        countryName: "Tunisie"
     },
     {
         title: "Livre Turque",
         currency: "TRY",
-        country: <Tr width={FlagWidth} height={FlagWidth} />
+        country: <Tr width={FlagWidth} height={FlagWidth} />,
+        countryName: "Turquie"
     },
     {
         title: "Dollar US",
         currency: "USD",
-        country: <Us width={FlagWidth} height={FlagWidth} />
+        country: <Us width={FlagWidth} height={FlagWidth} />,
+        countryName: "États-Unis"
     },
     {
         title: "Bolivar Vénézuélien",
         currency: "VES",
-        country: <Ve width={FlagWidth} height={FlagWidth} />
+        country: <Ve width={FlagWidth} height={FlagWidth} />,
+        countryName: "Venezuela"
     },
 ];
