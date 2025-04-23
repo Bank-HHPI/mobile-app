@@ -16,6 +16,14 @@ export default function Layout() {
           height: "100%", maxHeight: "100%", justifyContent: "flex-end", backgroundColor: "transparent"
         },
       }} />
+        <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name='complete' />
+        <Stack.Screen options={{ headerShown: false }} name="getCard" />
+        <Stack.Screen options={{ headerShown: false }} name="confirmAddress" />
+        <Stack.Screen options={{ headerShown: false }} name="confirmCard" />
+        <Stack.Screen options={{ headerShown: false }} name="cardReady" />
+        <Stack.Screen options={{headerShown: false, gestureEnabled: false}} name='cards' />
+        <Stack.Screen options={{ headerShown: false }} name="getCards" />
+        <Stack.Screen options={{ headerShown: false }} name="card2"   />
     </Stack>
   );
 }
