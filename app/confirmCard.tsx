@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'rea
 export default function ConfirmCard() {
     const [montantSelectionne, setMontantSelectionne] = useState(10); // Montant sélectionné
 
-    const gererChangementMontant = (montant) => {
+    const gererChangementMontant = (montant: number) => {
         setMontantSelectionne(montant);
     };
 
@@ -96,7 +96,7 @@ export default function ConfirmCard() {
             </View>
 
             {/* Bouton Payer */}
-            <TouchableOpacity style={styles.payButton} onPress={() => router.push('cardReady')}>
+            <TouchableOpacity style={styles.payButton} onPress={() => router.push('/cardReady')}>
                 <Text style={styles.payButtonText}>Payer</Text>
             </TouchableOpacity>
 

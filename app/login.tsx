@@ -85,7 +85,7 @@ const Login = () => {
                     variant={locked ? 'blue-disabled' : 'blue'}
                     disabled={locked}
                     width={'100%'}
-                    onPress={() => router.push({ pathname: "/signupcode", params: { number } })}
+                    onPress={() => router.push({ pathname: "/logincode", params: { number } })}
                 >
                     Se connecter
                 </Button>
