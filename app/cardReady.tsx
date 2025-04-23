@@ -28,7 +28,7 @@ export default function CardReady() {
             </View>
 
             {/* Continue Button */}
-            <TouchableOpacity style={styles.continueButton} onPress={() => router.push('index')}>
+            <TouchableOpacity style={styles.continueButton} onPress={() => router.push('/home')}>
                 <Text style={styles.continueButtonText}>Continue</Text>
             </TouchableOpacity>
         </View>
