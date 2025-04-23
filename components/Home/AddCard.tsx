@@ -1,19 +1,21 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import Add from '~/assets/Add'
+import { router } from 'expo-router'
 
 const AddCard = () => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity 
+            style={styles.container}
+            onPress={() => router.push('/getCard')}
+        >
             <View style={styles.card}>
                 <Add />
-
             </View>
             <Text style={styles.title}>
                 Carte
             </Text>
-
-        </View>
+        </TouchableOpacity>
     )
 }
 
