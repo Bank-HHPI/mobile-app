@@ -1,3 +1,4 @@
+import { router } from 'expo-router'
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Card from '~/assets/Card'
@@ -20,7 +21,7 @@ const BottomNavigation = () => {
                 <HomeIcon size={30} color={activePage === "home" ? "#007AFF" : "#777777"} />
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => setActivePage("transfer")}
+                onPress={() => router.push({ pathname: "/transfer" })}
                 style={styles.navbarButton}
             >
                 <Text style={styles.navbarbuttonText}>
