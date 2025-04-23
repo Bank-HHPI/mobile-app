@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   button_container: {
     position: 'absolute',
-    bottom: '55%',
+    bottom: '47.5%',
     width: '90%',
     display: 'flex',
 }

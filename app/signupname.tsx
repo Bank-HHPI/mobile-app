@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   title_container: {
     paddingTop: '5%',
-    paddingBottom: '10%',
+    paddingBottom: '5%',
   },
   title: {
     color: 'black',
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
   button_container: {
     position: 'absolute',
-    bottom: '17.5%',
+    bottom: '2.5%',
     width: '90%',
     display: 'flex',
 },
@@ -130,6 +130,5 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "center",
         gap: 20,
-        marginTop: 20,
   },
 });
