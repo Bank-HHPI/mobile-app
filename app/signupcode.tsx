@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         paddingTop: '10%',
+        gap: 10,
     },
     keyboard_input: {
         display: 'flex',
@@ -162,9 +163,11 @@ const styles = StyleSheet.create({
     keyboard_container: {
         display: 'flex',
         flexDirection: 'column',
-        width: '100%',
-        paddingLeft: '10%',
-        paddingRight: '10%',
+        width: '40%',
+        paddingLeft: '27.5%',
+        paddingRight: '27.5%',
+        paddingTop: '10%',
+        paddingBottom: '10%',
     },
 
 });

@@ -25,7 +25,7 @@ export default function SignupAdress() {
       <View style={styles.title_container}>
         <Text style={styles.title}>Adresse du domicile</Text>
         <Text style={styles.subtitle}>
-          Conformément à la loi, nous avons besoin de l'adresse de votre domicile pour ouvrir votre compte
+          Nous avons besoin de l'adresse de votre domicile pour ouvrir votre compte
         </Text>
       </View>
       <View style={styles.input_container}>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   title_container: {
     paddingTop: '5%',
-    paddingBottom: '10%',
+    paddingBottom: '2.5%',
   },
   title: {
     color: 'black',
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   button_container: {
     position: 'absolute',
-    bottom: '17.5%',
+    bottom: '2.5%',
     width: '90%',
     display: 'flex',
 },

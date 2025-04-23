@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 12,
         alignItems: 'center',
-        width: 250
+        width: 225
     },
     link_container: {
         paddingTop: '5%',
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     },
     button_container: {
         position: 'absolute',
-        bottom: '55%',
+        bottom: '42.5%',
         width: '90%',
         display: 'flex',
     }
