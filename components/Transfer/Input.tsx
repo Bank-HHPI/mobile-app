@@ -3,10 +3,14 @@ import { StyleSheet, Text, TextInput, View } from 'react-native'
 
 interface InputProps {
     label: string;
+    onChangeText?: (text: string) => void;
+    value?: string;
 }
 
 const Input = ({
-    label
+    label,
+    onChangeText = () => { },
+    value = "",
 }: InputProps) => {
     return (
         <View style={styles.inputContainer}>
@@ -15,6 +19,8 @@ const Input = ({
             </Text>
             <TextInput
                 style={styles.input}
+                onChangeText={onChangeText}
+                value={value}
             />
         </View>
     )

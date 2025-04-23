@@ -8,13 +8,15 @@ import {
   ScrollView,
 } from "react-native";
 import Svg, { Path } from "react-native-svg";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import DefaultLayout from "~/components/DefaultLayout";
 import CountryAccount from "~/components/CountryAccount";
 import Button from "~/components/Button";
 import { accountsTypes } from "~/constantes/AccountsTypes";
 
 export default function SignupCountry() {
+  const params = useLocalSearchParams();
+  const { phoneNumber, code } = params;
   const [selectedCountry, setSelectedCountry] = useState<any>(null);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -22,6 +24,11 @@ export default function SignupCountry() {
     setSelectedCountry(country);
     setModalVisible(false);
   };
+
+  const handleSingUp = () => {
+    console.log("Selected country:", selectedCountry.countryName);
+    router.push({ pathname: "/signupname", params: { phoneNumber, code, country: selectedCountry.countryName } });
+  }
 
   return (
     <DefaultLayout style={styles.container}>
@@ -57,15 +64,15 @@ export default function SignupCountry() {
 
       <Modal visible={modalVisible} animationType="slide">
         <ScrollView style={styles.contriesList}>
-        {accountsTypes.map((accountType, index) => (
+          {accountsTypes.map((accountType, index) => (
             <CountryAccount
-                key={index}
-                title={accountType.countryName}
-                currency={accountType.currency}
-                country={accountType.country}
-                onPress={() => handleSelectCountry(accountType)}
+              key={index}
+              title={accountType.countryName}
+              currency={accountType.currency}
+              country={accountType.country}
+              onPress={() => handleSelectCountry(accountType)}
             />
-            ))}
+          ))}
 
         </ScrollView>
         <TouchableOpacity
@@ -77,13 +84,13 @@ export default function SignupCountry() {
       </Modal>
       <View style={styles.button_container}>
         <Button
-            variant="blue"
-            onPress={() => router.push("/signupname")}
-            style={{ marginTop: 20, width: "100%" }}
+          variant="blue"
+          onPress={handleSingUp}
+          style={{ marginTop: 20, width: "100%" }}
         >
-            Continuer
+          Continuer
         </Button>
-        </View>
+      </View>
     </DefaultLayout>
   );
 }
@@ -154,5 +161,5 @@ const styles = StyleSheet.create({
     bottom: '47.5%',
     width: '90%',
     display: 'flex',
-}
+  }
 });

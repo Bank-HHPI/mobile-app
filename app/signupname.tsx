@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   StyleSheet,
@@ -6,12 +6,22 @@ import {
   TouchableOpacity
 } from "react-native";
 import Svg, { Path } from "react-native-svg";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import DefaultLayout from "~/components/DefaultLayout";
 import Input from "~/components/Transfer/Input";
 import Button from "~/components/Button";
 
 export default function SignupName() {
+  const params = useLocalSearchParams();
+  const { phoneNumber, code, country } = params;
+  const [birthDate, setBirthDate] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSignUp = () => {
+    router.push({ pathname: "/signupadress", params: { phoneNumber, code, country, birthDate, email } });
+  }
+
+
   return (
     <DefaultLayout style={styles.container}>
       <TouchableOpacity onPress={router.back}>
@@ -30,22 +40,20 @@ export default function SignupName() {
       </View>
       <View style={styles.input_container}>
         <Input
-          label="Nom"
-        />
-        <Input
-          label="Prénom"
-        />
-        <Input
+          onChangeText={setBirthDate}
+          value={birthDate}
           label="Date de naissance"
         />
         <Input
+          onChangeText={setEmail}
+          value={email}
           label="Adresse Email"
         />
       </View>
       <View style={styles.button_container}>
         <Button
             variant="blue"
-            onPress={() => router.push("/signupadress")}
+            onPress={handleSignUp}
             style={{ marginTop: 20, width: "100%" }}
         >
             Continuer

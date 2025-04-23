@@ -2,13 +2,29 @@ import Button from "~/components/Button";
 import DefaultLayout from "~/components/DefaultLayout";
 import { Text, StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { router } from "expo-router";
 
 export default function Signup() {
     const [locked, setLocked] = useState(true)
     const [numberLength, setNumberLength] = useState(0)
     const [number, setNumber] = useState('')
+
+    const handlePhoneExists = async () => {
+        const response = await fetch(`http://localhost:3000/clients/phone/${number}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        })
+        const data = await response.json()
+        if (data.message) {
+            router.push({ pathname: '/signupcode', params: { number } })
+        } else {
+            console.log(data.message)
+        }
+    }
 
     return (
         <DefaultLayout style={styles.container}>
@@ -36,24 +52,24 @@ export default function Signup() {
                         height={28}
                         viewBox="0 0 512 512"
                         fill="none"
-                        >
+                    >
                         <G clipPath="url(#clip0_4_7156)">
                             <Path
-                            d="M256 512c141.385 0 256-114.615 256-256S397.385 0 256 0 0 114.615 0 256s114.615 256 256 256z"
-                            fill="#F0F0F0"
+                                d="M256 512c141.385 0 256-114.615 256-256S397.385 0 256 0 0 114.615 0 256s114.615 256 256 256z"
+                                fill="#F0F0F0"
                             />
                             <Path
-                            d="M512 256c0-110.071-69.472-203.906-166.957-240.077v480.155C442.528 459.906 512 366.071 512 256z"
-                            fill="#D80027"
+                                d="M512 256c0-110.071-69.472-203.906-166.957-240.077v480.155C442.528 459.906 512 366.071 512 256z"
+                                fill="#D80027"
                             />
                             <Path
-                            d="M0 256c0 110.071 69.473 203.906 166.957 240.077V15.923C69.473 52.094 0 145.929 0 256z"
-                            fill="#0052B4"
+                                d="M0 256c0 110.071 69.473 203.906 166.957 240.077V15.923C69.473 52.094 0 145.929 0 256z"
+                                fill="#0052B4"
                             />
                         </G>
                         <Defs>
                             <ClipPath id="clip0_4_7156">
-                            <Path fill="#fff" d="M0 0H512V512H0z" />
+                                <Path fill="#fff" d="M0 0H512V512H0z" />
                             </ClipPath>
                         </Defs>
                     </Svg>
@@ -61,7 +77,7 @@ export default function Signup() {
                         +33
                     </Text>
                 </View>
-                <TextInput 
+                <TextInput
                     style={styles.number_container}
                     placeholder="Votre numéro de téléphone"
                     keyboardType="phone-pad"
@@ -76,7 +92,7 @@ export default function Signup() {
                             setLocked(true)
                         }
                     }
-                }
+                    }
                 />
             </View>
             <View style={styles.link_container}>
@@ -85,9 +101,9 @@ export default function Signup() {
             <View style={styles.button_container}>
                 <Button
                     variant={locked ? 'blue-disabled' : 'blue'}
-                    disabled={locked} 
-                    width={'100%'} 
-                    onPress={() => router.push({pathname: "/signupcode", params: {number}})}
+                    disabled={locked}
+                    width={'100%'}
+                    onPress={handlePhoneExists}
                 >
                     S'inscrire
                 </Button>
@@ -130,7 +146,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E0E3E7',
         padding: 20,
         borderRadius: 12,
-        alignItems: 'center', 
+        alignItems: 'center',
     },
     country_text: {
         color: 'black',
@@ -149,7 +165,7 @@ const styles = StyleSheet.create({
     link_container: {
         paddingTop: '5%',
     },
-    link:{
+    link: {
         color: '#2c64e3',
     },
     button_container: {

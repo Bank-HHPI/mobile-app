@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   StyleSheet,
@@ -6,12 +6,47 @@ import {
   TouchableOpacity
 } from "react-native";
 import Svg, { Path } from "react-native-svg";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import DefaultLayout from "~/components/DefaultLayout";
 import Input from "~/components/Transfer/Input";
 import Button from "~/components/Button";
 
 export default function SignupAdress() {
+
+  const [streetNumber, setStreetNumber] = useState("");
+  const [streetName, setStreetName] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [city, setCity] = useState("");
+
+
+  const params = useLocalSearchParams();
+  const { phoneNumber, code, country, birthDate, email } = params;
+
+  const handleSignup = async () => {
+    const response = await fetch("http://localhost:3000/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone: phoneNumber,
+        mail: email,
+        passcode: code,
+        birthdate: birthDate,
+        address: `${streetNumber} ${streetName}`,
+        zipcode: postalCode,
+        city: city,
+        country: country,
+      }),
+    });
+    const data = await response.json();
+    if (response.status === 200) {
+      router.push("/login");
+    } else {
+      console.log(data.message);
+    }
+  }
+
   return (
     <DefaultLayout style={styles.container}>
       <TouchableOpacity onPress={router.back}>
@@ -30,26 +65,35 @@ export default function SignupAdress() {
       </View>
       <View style={styles.input_container}>
         <Input
+          onChangeText={setStreetNumber}
+          value={streetNumber}
           label="Numéro de rue"
         />
         <Input
+          onChangeText={setStreetName}
+          value={streetName}
           label="Nom de rue"
         />
         <Input
+          onChangeText={setPostalCode}
+          value={postalCode}
           label="Code postal"
         />
         <Input
+          onChangeText={setCity}
+          value={city}
           label="Ville"
         />
       </View>
       <View style={styles.button_container}>
         <Button
-            variant="blue"
-            style={{ marginTop: 20, width: "100%" }}
+          variant="blue"
+          style={{ marginTop: 20, width: "100%" }}
+          onPress={handleSignup}
         >
-            Continuer
+          Continuer
         </Button>
-        </View>
+      </View>
     </DefaultLayout>
   );
 }
@@ -120,15 +164,15 @@ const styles = StyleSheet.create({
     bottom: '2.5%',
     width: '90%',
     display: 'flex',
-},
+  },
   input_container: {
     width: "100%",
-        height: "auto",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        gap: 20,
-        marginTop: 20,
+    height: "auto",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    gap: 20,
+    marginTop: 20,
   },
 });

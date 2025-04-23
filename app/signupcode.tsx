@@ -5,11 +5,17 @@ import Svg, { Path } from "react-native-svg";
 import { router, useLocalSearchParams } from 'expo-router';
 import Delete from '~/assets/Delete';
 import Enter from '~/assets/Enter';
+import Button from '~/components/Button';
 
 
 export default function SignupCode() {
     const params = useLocalSearchParams();
     const phoneNumber = params?.number;
+
+    const handleSignUp = () => {
+        router.push({pathname: '/signupcountry', params: { phoneNumber, code: '123456' }});
+    };
+
     return (
         <DefaultLayout style={styles.container}>
             <TouchableOpacity onPress={router.back}>
@@ -30,13 +36,13 @@ export default function SignupCode() {
                 <Text style={styles.subtitle}>Le code a été envoyé au {phoneNumber} sauf si vous avez déjà un compte.</Text>
             </View>
             <View style={styles.code_inputs}>
-                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0'/>
-                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0'/>
-                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0'/>
+                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0' />
+                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0' />
+                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0' />
                 <Text style={styles.code_text}>-</Text>
-                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0'/>
-                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0'/>
-                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0'/>
+                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0' />
+                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0' />
+                <TextInput style={styles.code_input} keyboardType='numeric' maxLength={1} placeholder='0' />
             </View>
             <View style={styles.resend_code_container}>
                 <Text style={styles.link}>
@@ -80,16 +86,24 @@ export default function SignupCode() {
                 </View>
                 <View style={styles.keyboard_inputs}>
                     <TouchableOpacity style={styles.keyboard_input}>
-                        <Delete/>
+                        <Delete />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.keyboard_input}>
                         <Text>0</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.keyboard_input}>
-                        <Enter/>
+                        <Enter />
                     </TouchableOpacity>
                 </View>
             </View>
+
+            <Button
+                variant={'blue'}
+                width={'100%'}
+                onPress={handleSignUp}
+            >
+                Se connecter
+            </Button>
 
         </DefaultLayout>
     );
