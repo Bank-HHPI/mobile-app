@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions, FlatList, ScrollView, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { useNavigation } from '@react-navigation/native';
+import { router } from 'expo-router';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -24,7 +24,6 @@ const cardData = [
 ];
 
 const PhysicalCardScreen = () => {
-  const navigation = useNavigation();
   const [activeIndex, setActiveIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
@@ -77,7 +76,7 @@ const PhysicalCardScreen = () => {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.navigate('getCards')}>
+        <TouchableOpacity onPress={() => router.back()}>
           <Icon name="chevron-back" size={24} color="#000" />
         </TouchableOpacity>
         <Text style={styles.title}>Carte de débit physique</Text>
@@ -144,7 +143,10 @@ const PhysicalCardScreen = () => {
       </View>
 
       {/* Bouton Obtenir la Carte Standard */}
-      <TouchableOpacity style={styles.getCardButton}>
+      <TouchableOpacity 
+        style={styles.getCardButton}
+        onPress={() => router.push('/home')}
+      >
         <Text style={styles.getCardButtonText}>Obtenir {cardData[activeIndex].title}*</Text>
       </TouchableOpacity>
     </View>
