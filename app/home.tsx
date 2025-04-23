@@ -1,3 +1,4 @@
+import { useAtomValue } from 'jotai'
 import React, { useState } from 'react'
 import { ScrollView, StyleSheet, TextInput, View } from 'react-native'
 import AccountInfos from '~/components/Home/AccountInfos'
@@ -6,10 +7,12 @@ import Cards from '~/components/Home/Cards'
 import LastTransactions from '~/components/Home/LastTransactions'
 import Modal from '~/components/Home/Modal'
 import Navbar from '~/components/Home/Navbar'
+import { accessTokenAtom } from './atom/access_token'
 
 const Home = () => {
 
     const [showModal, setShowModal] = useState<boolean>(false)
+    const access_token = useAtomValue(accessTokenAtom)
 
 
     return (

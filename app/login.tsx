@@ -4,12 +4,37 @@ import { Text, StyleSheet, View, TextInput, TouchableOpacity } from 'react-nativ
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
 import { router } from "expo-router";
 import { useState } from "react";
+import { useSetAtom } from "jotai";
+import { accessTokenAtom } from "./atom/access_token";
 
 const Login = () => {
 
     const [locked, setLocked] = useState(true)
+    const [passLocked, setPassLocked] = useState(true)
     const [numberLength, setNumberLength] = useState(0)
     const [number, setNumber] = useState('')
+    const [password, setPassword] = useState('')
+    const setAccessToken = useSetAtom(accessTokenAtom)
+
+    const handleLogin = async () => {
+        const response = await fetch('http://localhost:3000/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                phone: number,
+                password: password,
+            }),
+        });
+        const data = await response.json()
+        if (response.ok) {
+            setAccessToken(data.access_token)
+            router.push('/home')
+        } else {
+            alert(data.message)
+        }
+    }
 
     return (
         <DefaultLayout style={styles.container}>
@@ -76,16 +101,28 @@ const Login = () => {
                         } else {
                             setLocked(true)
                         }
-                    }
-                    }
+                    }}
                 />
             </View>
+            <TextInput
+                style={styles.password_container}
+                placeholder="Votre mot de passe"
+                secureTextEntry
+                onChangeText={(text) => {
+                    setPassword(text)
+                    if (text.length > 0) {
+                        setPassLocked(false)
+                    } else {
+                        setPassLocked(true)
+                    }
+                }}
+            />
             <View style={styles.button_container}>
                 <Button
                     variant={locked ? 'blue-disabled' : 'blue'}
-                    disabled={locked}
+                    disabled={locked || passLocked}
                     width={'100%'}
-                    onPress={() => router.push({ pathname: "/logincode", params: { number } })}
+                    onPress={handleLogin}
                 >
                     Se connecter
                 </Button>
@@ -145,6 +182,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 250
     },
+    password_container: {
+        width: '100%',
+        backgroundColor: '#E0E3E7',
+        padding: 20,
+        borderRadius: 12,
+        marginTop: '5%',
+        marginBottom: '5%',
+    },
     link_container: {
         paddingTop: '5%',
     },
@@ -152,9 +197,6 @@ const styles = StyleSheet.create({
         color: '#2c64e3',
     },
     button_container: {
-        position: 'absolute',
-        bottom: '55%',
-        width: '90%',
-        display: 'flex',
+        width: '100%',
     }
 })
