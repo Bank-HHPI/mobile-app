@@ -1,28 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Text,
   StyleSheet,
   View,
-  TouchableOpacity,
-  Modal,
-  ScrollView,
+  TouchableOpacity
 } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { router } from "expo-router";
 import DefaultLayout from "~/components/DefaultLayout";
-import CountryAccount from "~/components/CountryAccount";
+import Input from "~/components/Transfer/Input";
 import Button from "~/components/Button";
-import { accountsTypes } from "~/constantes/AccountsTypes";
 
-export default function SignupCountry() {
-  const [selectedCountry, setSelectedCountry] = useState<any>(null);
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const handleSelectCountry = (country: any) => {
-    setSelectedCountry(country);
-    setModalVisible(false);
-  };
-
+export default function SignupName() {
   return (
     <DefaultLayout style={styles.container}>
       <TouchableOpacity onPress={router.back}>
@@ -33,52 +22,30 @@ export default function SignupCountry() {
           />
         </Svg>
       </TouchableOpacity>
-
       <View style={styles.title_container}>
-        <Text style={styles.title}>Pays de résidence</Text>
+        <Text style={styles.title}>Informations générales</Text>
         <Text style={styles.subtitle}>
-          Les conditions et services qui s'appliquent à vous dépendront de votre pays de résidence
+          Le nom et le prénom qui est renseigné sur vos documents d'identité officiels
         </Text>
       </View>
-
-      <TouchableOpacity
-        onPress={() => setModalVisible(true)}
-        style={styles.input}
-      >
-        {selectedCountry ? (
-          <View style={styles.selectedCountryContainer}>
-            {selectedCountry.country}
-            <Text style={styles.selectedText}>{selectedCountry.countryName}</Text>
-          </View>
-        ) : (
-          <Text style={styles.placeholderText}>Sélectionner un pays</Text>
-        )}
-      </TouchableOpacity>
-
-      <Modal visible={modalVisible} animationType="slide">
-        <ScrollView style={styles.contriesList}>
-        {accountsTypes.map((accountType, index) => (
-            <CountryAccount
-                key={index}
-                title={accountType.countryName}
-                currency={accountType.currency}
-                country={accountType.country}
-                onPress={() => handleSelectCountry(accountType)}
-            />
-            ))}
-
-        </ScrollView>
-        <TouchableOpacity
-          onPress={() => setModalVisible(false)}
-          style={styles.closeButton}
-        >
-          <Text style={styles.closeButtonText}>Fermer</Text>
-        </TouchableOpacity>
-      </Modal>
+      <View style={styles.input_container}>
+        <Input
+          label="Nom"
+        />
+        <Input
+          label="Prénom"
+        />
+        <Input
+          label="Date de naissance"
+        />
+        <Input
+          label="Adresse Email"
+        />
+      </View>
       <View style={styles.button_container}>
         <Button
             variant="blue"
-            onPress={() => router.push("/signupname")}
+            onPress={() => router.push("/signupadress")}
             style={{ marginTop: 20, width: "100%" }}
         >
             Continuer
@@ -151,8 +118,18 @@ const styles = StyleSheet.create({
   },
   button_container: {
     position: 'absolute',
-    bottom: '55%',
+    bottom: '17.5%',
     width: '90%',
     display: 'flex',
-}
+},
+  input_container: {
+    width: "100%",
+        height: "auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        gap: 20,
+        marginTop: 20,
+  },
 });
