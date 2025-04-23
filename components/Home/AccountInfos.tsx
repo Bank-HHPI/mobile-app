@@ -30,17 +30,20 @@ const AccountInfos = ({
         {
             name: "Ajouter",
             icon: <Add color='#4e59ef' size={20} />,
-            href: "/deposit"
+            href: "/deposit",
+            disbled: false
         },
         {
             name: "Echanger",
             icon: <Exchange color='#4e59ef' size={25} />,
-            href: "/accountinfos"
+            href: "/accountinfos",
+            disbled: false
         },
         {
             name: "Plus",
             icon: <More color='#4e59ef' size={20} />,
-            href: ""
+            href: "",
+            disbled: true
         }
     ]
 
@@ -68,7 +71,7 @@ const AccountInfos = ({
 
             <View style={styles.utils}>
                 {utils.map((util) => (
-                    <TouchableOpacity key={util.name} onPress={() => router.push(util.href as any)} style={styles.utilsButton}>
+                    <TouchableOpacity key={util.name} onPress={() => router.push(util.href as any)} style={styles.utilsButton} disabled={util.disbled}>
                         <View style={styles.utilsIcon}>
                             {util.icon}
                         </View>
