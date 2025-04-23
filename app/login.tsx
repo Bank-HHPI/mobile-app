@@ -87,7 +87,7 @@ const Login = () => {
                     width={'100%'}
                     onPress={() => router.push({ pathname: "/signupcode", params: { number } })}
                 >
-                    S'inscrire
+                    Se connecter
                 </Button>
             </View>
         </DefaultLayout>
