@@ -1,37 +1,33 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface CountryAccountProps {
-    country: React.ReactNode
-    title: string
-    currency: string
+    country: React.ReactNode;
+    title: string;
+    currency: string;
+    onPress?: () => void; // Assure-toi que `onPress` est bien une fonction optionnelle
 }
 
 const CountryAccount = ({
     country,
     title,
-    currency
+    currency,
+    onPress
 }: CountryAccountProps) => {
-
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <View style={styles.country}>
                 {country}
             </View>
             <View style={styles.infos}>
-                <Text style={styles.titleText}>
-                    {title}
-                </Text>
-                <Text style={styles.currencyText}>
-                    {currency}
-                </Text>
+                <Text style={styles.titleText}>{title}</Text>
+                <Text style={styles.currencyText}>{currency}</Text>
             </View>
-
         </TouchableOpacity>
-    )
-}
+    );
+};
 
-export default CountryAccount
+export default CountryAccount;
 
 const styles = StyleSheet.create({
     container: {
@@ -70,4 +66,4 @@ const styles = StyleSheet.create({
         fontWeight: "500",
         color: "#737a86",
     }
-})
+});
