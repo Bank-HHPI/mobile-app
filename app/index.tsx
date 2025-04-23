@@ -9,7 +9,7 @@ import DefaultLayout from "~/components/DefaultLayout";
 export default function Home() {
   useEffect(() => {
     setTimeout(() => {
-      router.push({ pathname: "/welcome" })
+      router.push({ pathname: "/home" })
     }, 1500)
   }, [])
 
